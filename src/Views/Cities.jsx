@@ -2,18 +2,16 @@
 import Header from "../Components/Header"
 import Main from "../Components/Main"
 import Footer from "../Components/Footer"
-
+import LayoutMain from "./LayoutMain"
 
 
 
 const Cities=(props) =>{
     return (
-        <div className="w-full min-h-screen width: 1728px height: 558.5px  flex flex-col bg-gradient-to-r from-cyan-500 to-blue-500">
-            <Header></Header>
-          <Main titulo="CITIES"></Main>
-            <Footer></Footer>
-
-        </div>
+    <LayoutMain imagen="src/assets/isla.jpg"> 
+        <Main></Main>
+    </LayoutMain>
+     
 
     )
 }
