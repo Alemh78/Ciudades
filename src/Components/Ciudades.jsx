@@ -1,4 +1,4 @@
-const Ciudades=[
+export const Ciudades=[
     {
         "name": "Paris",
         "country": "France",
@@ -119,4 +119,14 @@ const Ciudades=[
         "currency": "Mexican Peso",
         "language": "Spanish"
       }
-    ]
+    ];
+
+
+
+
+
+
+
+
+
+

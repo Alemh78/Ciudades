@@ -1,13 +1,18 @@
-import Main from "../Components/Main"
+import Main from "../Components/Main";
 import LayoutMain from "./LayoutMain";
+import React, { useState } from "react";
 
-let HOME=(props) =>{
-    return (
-        <LayoutMain imagen="src/assets/isla 2.jpg" titulo="MY TINERARY">
-            <Main ></Main>
-        </LayoutMain>
-         
 
-    );
-};
+const HOME=() =>{return( 
+
+    <LayoutMain titulo="MY TINERARY" bg="bg-gradient-to-r from-cyan-500 to-blue-500">
+       <Main imagen="src/assets/isla.jpg">
+       </Main>
+</LayoutMain>
+   
+   );   
+  };
+  
+
+
 export default HOME
