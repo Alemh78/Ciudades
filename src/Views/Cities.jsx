@@ -50,25 +50,26 @@ const Cities=(props) =>{
         setLugares3(ciudad[aux]);
     };
    return (
-    <LayoutMain bg="bg-gradient-to-r from-cyan-500 to-blue-500"> 
-        <Main>
-        <div className="mt-20 ml-10 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+    <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg="bg-cyan-700" color="bg-cyan-700"> 
+        <Main >
+        <div className="grow mt-20 ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l flex justify- items-center " onClick={prev1}>prev</button>
         <Carrusel lugares={lugares1}/>
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next1}>next</button>
         </div>
         
-        <div className="  ml-10 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <div className=" grow ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
         <button className="bg-gray-300   hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 gap-4 rounded-l" onClick={prev2}>prev</button>
         <Carrusel lugares={lugares2} />
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next2}>next</button>
         </div>
         
-        <div className=" ml-10 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <div className="grow ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  rounded-l" onClick={prev3}>prev</button>
         <Carrusel lugares={lugares3} />
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next3}>next</button> 
         </div>
+    
         
          </Main>
     </LayoutMain>

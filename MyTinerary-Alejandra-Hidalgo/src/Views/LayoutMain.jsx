@@ -1,6 +1,6 @@
 
 import Header from "../Components/Header";
-import Footer from "../Components/Footer(1)";
+import Footer from "../Components/Footer"
 import BanerYTitulo from "../Components/BanerYTitulo";
 
 
@@ -12,7 +12,7 @@ function LayoutMain(props) {
             <Header></Header>
             <BanerYTitulo Imagen={props.Imagen} titulo={props.titulo} bg={props.bg}></BanerYTitulo>
             {props.children}
-            <Footer foter={props.foter} color={props.color}></Footer>
+            <Footer></Footer>
 
         </div>
 

@@ -1,9 +1,9 @@
 const BanerYTitulo=(props)=>{
     return(
-<div className="w-full min-h-full" >
+<div className={props.bg} >
 
-<h1 className="text-5xl flex  flex-col justify-center items-center mt-20 text-white ">{props.titulo}</h1>  
-<img  src={props.Imagen} className="w-full min-h-full bg-cover"></img>
+<h1 className="text-5xl  justify-center items-center text-center  text-black ">{props.titulo}</h1>  
+<img  src={props.Imagen} className="w-full min-h-full bg-cover {props.bg}" ></img>
 {props.children}
 </div>
 
