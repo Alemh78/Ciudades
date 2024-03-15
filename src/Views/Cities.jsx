@@ -50,8 +50,8 @@ const Cities=(props) =>{
         setLugares3(ciudad[aux]);
     };
    return (
-    <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg="bg-cyan-700" color="bg-cyan-700"> 
-        <Main >
+    <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg="bg-cyan-700" content="bg-cyan-700"> 
+        <Main claseMain="w-full max-h-full bg-cyan-700">
         <div className="grow mt-20 ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l flex justify- items-center " onClick={prev1}>prev</button>
         <Carrusel lugares={lugares1}/>

@@ -1,8 +1,10 @@
 const Footer=(props)=>{
     return( 
-        <footer content="w-full h-30 bg-gray-950">
-            <p className="flex  justify-center text-center text-3xl"></p>
+        <footer className={props.content}>
+            <p className="flex  justify-center text-center text-3xl">{props.foter}</p>
+            {props.children}
         </footer>
+
 
         
     )

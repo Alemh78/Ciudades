@@ -3,7 +3,7 @@ const Main=(props)=>{
     return(
 
 <div>
-    <main className="w-full max-h-full bg-cyan-700" >
+    <main className= {props.claseMain}>
 
        
         <p className="text-xl text-center justify-center text-black">{props.subtitulo}</p>
