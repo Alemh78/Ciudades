@@ -1,5 +1,6 @@
 export const Ciudades=[
-    {
+    
+      {
         "name": "Paris",
         "country": "France",
         "description": "Paris is the capital city of France. It is renowned for its beautiful architecture, art, and rich history.",
@@ -119,14 +120,4 @@ export const Ciudades=[
         "currency": "Mexican Peso",
         "language": "Spanish"
       }
-    ];
-
-
-
-
-
-
-
-
-
-
+    ]

@@ -1,75 +1,54 @@
-import Main from "../Components/Main";
+import Main from "../Components/Main"; 
 import LayoutMain from "./LayoutMain";
-import React, { useState } from "react";
-import {Ciudades} from "../Components/Ciudades";
+import { useState,useEffect,useRef } from "react";
+import { getCities } from "../../MyTinerary-Alejandra-Hidalgo/service/citiesQueries";
 import Carrusel from "../Components/Carrusel";
-const Cities=(props) =>{
+import { data } from "autoprefixer";
 
-    const ciudad = Ciudades.slice(0, 13);
-    const [lugares1, setLugares1] = useState(ciudad[0]);
-    const [lugares2, setLugares2] = useState(ciudad[5]); 
-    const [lugares3, setLugares3] = useState(ciudad[9]); 
-    const [indice1, setIndice1] = useState(0);
-    const [indice2, setIndice2] = useState(5); 
-    const [indice3, setIndice3] = useState(9); 
 
-    const next1 = () => {
-        let aux = indice1 === 4 ? 0 : indice1 + 1;
-        setIndice1(aux);
-        setLugares1(ciudad[aux]);
+const Cities=() =>{
+    const[Ciudades,setCiudades]=useState([]);
+    const [filtradas,setfiltradas]=useState([])
+    const buscar=useRef(null)
+
+
+
+    useEffect(()=>{
+        getCities().then(Respuesta=> setCiudades(Respuesta.data))  
+        setfiltradas(data)
+    },[]);
+
+    const handleImput=()=>{
+        const aux2=filterByName(Ciudades,buscar.current.value);
+        setfiltradas(aux2);
+
     };
 
-    const prev1 = () => {
-        let aux = indice1 === 0 ? 4 : indice1 - 1;
-        setIndice1(aux);
-        setLugares1(ciudad[aux]);
-    };
+
+    const filterByName=(Ciudadlista,value)=>
+    Ciudadlista.filter((ciudad)=>
+    ciudad.name.tolowerCase().startsWith(value.tolowerCase()));
+
+const renderCiudades= Ciudades.map((ciudad)=> (<Carrusel key={Ciudades._id}lugares={ciudad}/>))
+
 
     
-    const next2 = () => {
-        let aux = indice2 === 8 ? 5 : indice2 + 1;
-        setIndice2(aux);
-        setLugares2(ciudad[aux]);
-    };
-
-    const prev2 = () => {
-        let aux = indice2 === 5 ? 8 : indice2 - 1;
-        setIndice2(aux);
-        setLugares2(ciudad[aux]);
-    };
-
-    const next3 = () => {
-        let aux = indice3 === 12 ? 9 : indice3 + 1;
-        setIndice3(aux);
-        setLugares3(ciudad[aux]);
-    };
-
-    const prev3 = () => {
-        let aux = indice3 === 9 ? 12 : indice3 - 1;
-        setIndice3(aux);
-        setLugares3(ciudad[aux]);
-    };
    return (
     <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg="bg-cyan-700" content="bg-cyan-700"> 
-        <Main claseMain="w-full max-h-full bg-cyan-700">
-        <div className="grow mt-20 ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l flex justify- items-center " onClick={prev1}>prev</button>
-        <Carrusel lugares={lugares1}/>
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next1}>next</button>
-        </div>
-        
-        <div className=" grow ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-        <button className="bg-gray-300   hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 gap-4 rounded-l" onClick={prev2}>prev</button>
-        <Carrusel lugares={lugares2} />
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next2}>next</button>
-        </div>
-        
-        <div className="grow ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4  rounded-l" onClick={prev3}>prev</button>
-        <Carrusel lugares={lugares3} />
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next3}>next</button> 
-        </div>
-    
+        <Main >
+           <search className="w-full h-9 border-black border-[3px] flex justify-center items-center">
+              <input 
+              type="text"
+              name="name_lugares"
+              className="w-3/4 rounded text-black outline-none"
+              onInput={handleImput}
+              ref={buscar}
+              />
+           </search>
+           <section className="  w-70 space-x-5 border-black border-[3px] ">
+           {Ciudades.length > 0 && renderCiudades}
+           </section>
+
         
          </Main>
     </LayoutMain>
