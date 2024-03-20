@@ -14,8 +14,10 @@ const Cities=() =>{
 
 
     useEffect(()=>{
-        getCities().then(Respuesta=> setCiudades(Respuesta.data))  
-        setfiltradas(data)
+        getCities().then(Respuesta=>{
+            setCiudades(Respuesta.data);  
+        setfiltradas(data);
+    });
     },[]);
 
     const handleImput=()=>{
@@ -25,18 +27,26 @@ const Cities=() =>{
     };
 
 
-    const filterByName=(Ciudadlista,value)=>
+    const filterByName=(Ciudadlista,value)=>(
     Ciudadlista.filter((ciudad)=>
-    ciudad.name.tolowerCase().startsWith(value.tolowerCase()));
+    ciudad.name.toLowerCase().startsWith(value.toLowerCase())
+    ));
 
-const renderCiudades= Ciudades.map((ciudad)=> (<Carrusel key={Ciudades._id}lugares={ciudad}/>))
+    const renderCiudades = Array.isArray(filtradas) ? filtradas.map((ciudad) => (
+        <div key={ciudad._id} className="relative bg-cyan-800  bottom-0 left-0 w-full  bg-opacity-80 text-white p-2text-xl font-bold text-sm ">
+            <Carrusel lugares={ciudad} className="h-full" />
+        </div>
+    )) : null;
 
 
     
+
+   
+    
    return (
-    <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg="bg-cyan-700" content="bg-cyan-700"> 
+    <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg=" bg-gradient-to-r from-cyan-600 to-blue-600"  content="bg-cyan-700"> 
         <Main >
-           <search className="w-full h-9 border-black border-[3px] flex justify-center items-center">
+           <search className=" border-black border-[3px] flex items-center">
               <input 
               type="text"
               name="name_lugares"
@@ -45,10 +55,10 @@ const renderCiudades= Ciudades.map((ciudad)=> (<Carrusel key={Ciudades._id}lugar
               ref={buscar}
               />
            </search>
-           <section className="  w-70 space-x-5 border-black border-[3px] ">
-           {Ciudades.length > 0 && renderCiudades}
+           <section className=" grid grid-cols-3 gap-4 my-4 h-auto max-w-full">
+           {filtradas.length > 0 && renderCiudades}
            </section>
-
+           
         
          </Main>
     </LayoutMain>
