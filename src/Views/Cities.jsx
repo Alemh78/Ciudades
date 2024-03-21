@@ -4,6 +4,7 @@ import { useState,useEffect,useRef } from "react";
 import { getCities } from "../../MyTinerary-Alejandra-Hidalgo/service/citiesQueries";
 import Carrusel from "../Components/Carrusel";
 import { data } from "autoprefixer";
+import { Link } from "react-router-dom";
 
 
 const Cities=() =>{
@@ -16,7 +17,7 @@ const Cities=() =>{
     useEffect(()=>{
         getCities().then(Respuesta=>{
             setCiudades(Respuesta.data);  
-        setfiltradas(data);
+        setfiltradas(Respuesta.data);
     });
     },[]);
 
@@ -33,10 +34,17 @@ const Cities=() =>{
     ));
 
     const renderCiudades = Array.isArray(filtradas) ? filtradas.map((ciudad) => (
-        <div key={ciudad._id} className="relative bg-cyan-800  bottom-0 left-0 w-full  bg-opacity-80 text-white p-2text-xl font-bold text-sm ">
+        <div key={ciudad._id} className="relative bg-cyan-800  bottom-0 left-0  bg-opacity-80
+         text-white p-2text-xl font-bold text-sm rounded-black">
             <Carrusel lugares={ciudad} className="h-full" />
+            <div>
+            <Link to={"/Detalles/" + ciudad._id} className="text-white p-2 text-xl font-bold rounded-black">DETALLES</Link>
+            </div>
         </div>
-    )) : null;
+    )) : (
+        <div className="text-center">
+            <Link to="/Detalles" className="text-black p-2 text-sm font-bold rounded-black">DETAILS</Link>
+        </div>);
 
 
     
@@ -46,11 +54,11 @@ const Cities=() =>{
    return (
     <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" bg=" bg-gradient-to-r from-cyan-600 to-blue-600"  content="bg-cyan-700"> 
         <Main >
-           <search className=" border-black border-[3px] flex items-center">
+           <search className="w-90 border-black border-[3px] flex items-center">
               <input 
               type="text"
               name="name_lugares"
-              className="w-3/4 rounded text-black outline-none"
+              className="rounded text-black outline-none"
               onInput={handleImput}
               ref={buscar}
               />

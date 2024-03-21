@@ -1,7 +1,7 @@
 
 import Header from "../Components/Header";
 import Footer from "../Components/Footer"
-import BanerYTitulo from "../Components/BanerYTitulo";
+import BanerYTitulo from "../Components/BanerYTitulo"
 
 
 
