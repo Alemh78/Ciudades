@@ -10,19 +10,17 @@ export const getCities= async() =>{
        return []
         
     }
-   return[]
 
 };
 
-export const getCitiesById= async(_id) =>{
+export const getCitiesById= async(id) =>{
     try {
-        const respuesta= await axios(`http://localhost:4000/api/cities` + _id)
-        return respuesta.data.Ciudades
+        const respuesta= await axios(`http://localhost:4000/api/cities/`+ id)
+        return respuesta.data
     
     } catch (err) {
-       return []
+       return {}
         
     }
-   return[]
 
 };

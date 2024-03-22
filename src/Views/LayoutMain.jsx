@@ -9,7 +9,7 @@ function LayoutMain(props) {
     
     return (
         <div className="w-full min-h-screen  flex flex-col ">
-            <Header></Header>
+            <Header img={props.img}></Header>
             <BanerYTitulo Imagen={props.Imagen} titulo={props.titulo} bg={props.bg}></BanerYTitulo>
             {props.children}
             <Footer foter={props.foter} content={props.content}></Footer>

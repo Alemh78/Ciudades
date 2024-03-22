@@ -52,7 +52,7 @@ const HOME=(props) =>{
    
 return( 
 
-    <LayoutMain titulo="MY TINERARY" bg=" bg-gradient-to-r from-cyan-600 to-blue-600" 
+    <LayoutMain titulo="MY TINERARY" bg=" bg-gradient-to-r from-cyan-600 to-blue-600" img="src/assets/mundo.jpg"
     content="bg-gradient-to-r from-cyan-600 to-sky-600 w-full min-h-full" foter="Alejandra Hidalgo-My tinerary">
        <Main imagen="src/assets/isla.jpg" claseMain="w-full max-h-full bg-cyan-700">
        <div className="grow mt-10 mb-10 ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
