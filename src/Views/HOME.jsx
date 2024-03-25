@@ -1,5 +1,5 @@
 import Main from "../Components/Main";
-import LayoutMain from "./LayoutMain";
+import LayoutMain from "../Components/LayoutMain";
 import React, { useState } from "react";
 import { Ciudades } from "../Components/Ciudades";
 import Carrusel from "../Components/Carrusel";

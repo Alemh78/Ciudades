@@ -1,23 +1,17 @@
+import { Link } from "react-router-dom";
 
-const Main=(props)=>{
-    return(
+const Main = (props) => {
+    return (
+        <main>
+            <div>
+                <Link to="/">Home</Link>
+               
+                <p className="text-xl text-center justify-center text-black">{props.subtitulo}</p>
+                 <img src={props.imagen}></img>
+            </div>
+            {props.children}
+        </main>
+    );
+};
 
-<div>
-    <main className= {props.claseMain}>
-
-       
-        <p className="text-xl text-center justify-center text-black">{props.subtitulo}</p>
-        <img src={props.imagen}></img>
-        {props.children}
-    </main>
-    
-</div>
-
-
-
-
-
-
-    )
-}
-export default Main
+export default Main;
