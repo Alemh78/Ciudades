@@ -4,7 +4,6 @@ const Main = (props) => {
     return (
         <main>
             <div>
-                <Link to="/">Home</Link>
                
                 <p className="text-xl text-center justify-center text-black">{props.subtitulo}</p>
                  <img src={props.imagen}></img>

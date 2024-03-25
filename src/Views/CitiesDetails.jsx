@@ -54,10 +54,7 @@ const CitiesDetails = (props) => {
  
 </div>
 ))}
-       
-       
-       
-      </Main>
+       </Main>
     </LayoutMain>
   );
 };

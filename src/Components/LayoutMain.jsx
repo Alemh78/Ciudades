@@ -9,7 +9,7 @@ function LayoutMain(props) {
       <Header></Header>
       <BanerYTitulo Imagen={props.Imagen} titulo={props.titulo} bg={props.bg} />
       {props.children}
-      <Link to="/Registrar">Register</Link>
+     
       <Footer></Footer>
     </div>
   );
