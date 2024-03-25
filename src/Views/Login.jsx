@@ -1,49 +1,50 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LayoutMain from "../Components/LayoutMain";
+import authQueries from '../service/authQueries';
 
 function Login() {
     const [formData, setFormData] = useState({
-      first_name: "nombre",
+      first_name: "",
       last_name: "",
-        email: "",
-        password: "",
+      email: "",
+      password: "",
+       
     });
-    const [savedData, setSavedData] = useState(null);
+    const Navigate=useNavigate();
+    function handleInputChange(e){
+      const name=e.target.name
+      const value=e.target.value
+      const aux={...formData};
+      aux[name]=value;
+      setFormData(aux);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
+    }
+function handleSubmit(e) {
       e.preventDefault();
-      console.log(formData);
+      const aux={formData};
+      for(const key in aux){
+       if (!aux[key]) delete aux [key]; 
+       authQueries.Login(aux).then((response)=>{console.log(response)
+      if (response.status==201){alerts.console.log("Registro exitoso!");
+    Navigate("/login");
+  }else{
+    setError(response.message || "Error al registrar.")
   
-      try {
-          const response = await login(formData); 
-          
-          if (response.success) {
-              console.log("Inicio de sesión exitoso!");
-          
-          } else {
-              console.error("Error en el inicio de sesión:", response.message);
-          }
-      } catch (error) {
-          console.error("Error en el inicio de sesión:", error.message);
-      }
+  }
+      })
+     
   };
-
+}
     return (
         <LayoutMain>
             <div>
                 <Link to="/Header"></Link>
                 <main className="grow flex justify-center bg-blue-500">
                     <div className="border border-black w-10/12 bg-white rounded-lg">
-                    
+                    <div>
+                    <input type="text" id="username" name="username" autoComplete="username"/>
+                    </div>
                       <form className="p-8" onSubmit={handleSubmit}>
                           <div className="mb-4">
                             <input
@@ -75,6 +76,7 @@ function Login() {
                                     onChange={handleInputChange}
                                 />
                             </div>
+                           
                             <div className="mb-4">
                                 <input
                                     className="border border-black w-full h-10 outline-none rounded-lg px-3"
@@ -98,16 +100,15 @@ function Login() {
                     Alejandra Hidalgo-My Tinerary
                 </footer>
             </div>
-            {savedData && (
+            {formData && (
                 <div className="p-8">
                     <h2>Datos guardados:</h2>
                     <h2>Datos guardados:</h2>
-                                <p>First Name: {savedData.first_name}</p>
-                                <p>Last Name: {savedData.last_name}</p>
-                                <p>Email: {savedData.email}</p>
-                                <p>Password: {savedData.password}</p>
-                                <p>Country: {savedData.country}</p>
-                                <p>Image URL: {savedData.image}</p>
+                                <p>First Name: {formData.first_name}</p>
+                                <p>Last Name: {formData.last_name}</p>
+                                <p>Email: {formData.email}</p>
+                                <p>Country: {formData.country}</p>
+                                <p>Image URL: {formData.image}</p>
                 </div>
             )}
         </LayoutMain>

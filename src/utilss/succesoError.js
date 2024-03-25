@@ -25,4 +25,4 @@ const error=(msg)=>toast.error('msg', {
     transition: Bounce,
     });
 
-    export default{success}
+    export default{success,error}

@@ -17,3 +17,7 @@ const login=async(data)=>{
         return error.response.data
     }
 }
+
+
+
+export default {register,login};

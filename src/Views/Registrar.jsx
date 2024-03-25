@@ -5,13 +5,15 @@ import LayoutMain from "../Components/LayoutMain";
 
 function Registrar() {
     const [formData, setFormData] = useState({
-        first_name: "nombre",
+        first_name: "",
         last_name: "",
         email: "",
         password: "",
         country: "",
         image: "",
+        description:"",
     });
+    
     const [savedData, setSavedData] = useState(null);
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -46,6 +48,9 @@ function Registrar() {
             <Link to="/Header"></Link>
             <main className="grow flex justify-center bg-blue-500">
                 <div className="border border-black w-10/12 bg-white rounded-lg">
+                    <div>
+                    <input type="text" id="username" name="username" autoComplete="username"/>
+                    </div>
                     <form className="p-8" onSubmit={handleSubmit}>
                         <div className="mb-4">
                                 <input
@@ -57,6 +62,7 @@ function Registrar() {
                                     onChange={handleInputChange}
                                 />
                             </div>
+                            
                             <div className="mb-4">
                                 <input
                                     className="border border-black w-full h-10 outline-none rounded-lg px-3"
@@ -87,6 +93,7 @@ function Registrar() {
                                     onChange={handleInputChange}
                                 />
                             </div>
+                           
                             <div className="mb-4">
                                 <select
                                     name="country"
@@ -108,6 +115,16 @@ function Registrar() {
                                     name="image"
                                     placeholder="URL image"
                                     value={formData.image}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="mb-4">
+                            <input
+                                    className="border border-black w-full h-10 outline-none rounded-lg px-3"
+                                    type="text"
+                                    placeholder="description"
+                                    name="description"
+                                    value={formData.first_name}
                                     onChange={handleInputChange}
                                 />
                             </div>
