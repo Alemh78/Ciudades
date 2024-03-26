@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Main from "../Components/Main";
 import LayoutMain from "../Components/LayoutMain";
 import React, { useState } from "react";
@@ -55,6 +56,7 @@ return(
     <LayoutMain titulo="MY TINERARY" bg=" bg-gradient-to-r from-cyan-600 to-blue-600" img="src/assets/mundo.jpg"
     content="bg-gradient-to-r from-cyan-600 to-sky-600 w-full min-h-full" foter="Alejandra Hidalgo-My tinerary">
        <Main imagen="src/assets/isla.jpg" claseMain="w-full max-h-full bg-cyan-700">
+        <main className="bg-gradient-to-r from-cyan-600 to-sky-600">
        <div className="grow mt-10 mb-10 ml-5 inline-flex items-center justify-center  bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l flex justify- items-center " onClick={prev1}>prev</button>
         <Carrusel lugares={lugares1}/>
@@ -72,7 +74,7 @@ return(
         <Carrusel lugares={lugares3} />
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={next3}>next</button> 
         </div>
-    
+        </main>
       </Main>
 </LayoutMain>
    

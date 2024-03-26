@@ -56,6 +56,7 @@ const Cities=() =>{
     <LayoutMain foter="Alejandra Hidalgo-My tinerary" titulo="Cities" 
     bg=" bg-gradient-to-r from-cyan-600 to-blue-600"  content="bg-cyan-700" img="src/assets/mundo.jpg"> 
         <Main >
+            <main className="bg-gradient-to-r from-cyan-600 to-blue-600">
         <div>
       <p className="mx-8 -mt-12 mb-8">Buscar</p>
       <div className=" mx-24 -mt-12 mb-8 relative flex w-full max-w-[14rem] border rounded text-black">
@@ -74,7 +75,7 @@ const Cities=() =>{
            <section className=" grid grid-cols-3 gap-4 my-4 mt-4 h-auto w-full">
            {renderCiudades}
            </section>
-           
+           </main>
         
          </Main>
     </LayoutMain>

@@ -8,11 +8,17 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from "./Views/Login"
 import Registrar from "./Views/Registrar";
-
+import { useEffect } from "react";
+import authQueries from "./service/authQueries";
 
 
 function App(){
-  return (
+useEffect(()=>{
+  authQueries.loginWhithToken().then((res)=>{
+    console.log(res);
+  });
+}, []);
+return (
   <BrowserRouter>
    <Provider store={store}> 
       <Routes>

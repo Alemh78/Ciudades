@@ -21,6 +21,7 @@ const CitiesDetails = (props) => {
     <LayoutMain footer="Alejandra Hidalgo-My tinerary" titulo="DETAILS" 
     bg=" bg-gradient-to-r from-cyan-600 to-blue-600" content="bg-cyan-700">
       <Main>
+        <main className="bg-gradient-to-r from-cyan-400 to-blue-200">
 
         <div className="text-black p-2 text-sm font-bold rounded-black bg-blue-400 relative object-cover">
           <h2 className="text-center text-3xl">{cityDetails.name}</h2>
@@ -47,13 +48,16 @@ const CitiesDetails = (props) => {
      <p className="text-center">Hashtags: {itinerary.hashtags.join(', ')}</p>
      <div className="flex justify-center ">
      {itinerary.activities.map((activity) => (
-  <img key={activity.id} src={activity.image} alt={activity.name} className="w-24 h-24 mx-1 relative object-cover  bottom-0 left-0  bg-opacity-80 p-2 text-xl font-bold  rounded-black " />
+  <img key={activity.id} src={activity.image} alt={activity.name} className="w-24 h-24 mx-1 relative 
+  object-cover  bottom-0 left-0  bg-opacity-80 p-2 text-xl font-bold  rounded-black "  />
+ 
 ))}
      </div>
    </div>
  
 </div>
 ))}
+</main>
        </Main>
     </LayoutMain>
   );

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import LayoutMain from "../Components/LayoutMain";
-import authQueries from '../service/authQueries';
+
 
 function Login() {
     const [formData, setFormData] = useState({
-      first_name: "",
-      last_name: "",
-      email: "",
-      password: "",
-       
-    });
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+      });
     const Navigate=useNavigate();
     function handleInputChange(e){
       const name=e.target.name
@@ -20,22 +19,22 @@ function Login() {
       setFormData(aux);
 
     }
-function handleSubmit(e) {
-      e.preventDefault();
-      const aux={formData};
-      for(const key in aux){
-       if (!aux[key]) delete aux [key]; 
-       authQueries.Login(aux).then((response)=>{console.log(response)
-      if (response.status==201){alerts.console.log("Registro exitoso!");
-    Navigate("/login");
-  }else{
-    setError(response.message || "Error al registrar.")
-  
-  }
-      })
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            const response = await login(formData);
+            console.log(response);
+            if (response.status === 201) {
+                console.log("Registro exitoso!");
+                Navigate("/login");
+            } else {
+                setError(response.message || "Error al registrar.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
      
-  };
-}
+        }
+    }
     return (
         <LayoutMain>
             <div>
@@ -96,19 +95,18 @@ function handleSubmit(e) {
                         </form>
                     </div>
                 </main>
-                <footer className="bg-blue-500 text-white text-center py-4">
+                <footer className="bg-blue-500 text-black text-center py-4">
                     Alejandra Hidalgo-My Tinerary
                 </footer>
             </div>
             {formData && (
-                <div className="p-8">
-                    <h2>Datos guardados:</h2>
+                <div className="p-8 bg-blue-500 text-black">
+
                     <h2>Datos guardados:</h2>
                                 <p>First Name: {formData.first_name}</p>
                                 <p>Last Name: {formData.last_name}</p>
                                 <p>Email: {formData.email}</p>
-                                <p>Country: {formData.country}</p>
-                                <p>Image URL: {formData.image}</p>
+                                
                 </div>
             )}
         </LayoutMain>

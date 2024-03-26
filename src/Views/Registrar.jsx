@@ -144,7 +144,6 @@ function Registrar() {
                                 <p>First Name: {savedData.first_name}</p>
                                 <p>Last Name: {savedData.last_name}</p>
                                 <p>Email: {savedData.email}</p>
-                                <p>Password: {savedData.password}</p>
                                 <p>Country: {savedData.country}</p>
                                 <p>Image URL: {savedData.image}</p>
                             </div>
