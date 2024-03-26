@@ -4,6 +4,8 @@ import { useState,useEffect,useRef } from "react";
 import { getCities } from "../service/citiesQueries";
 import Carrusel from "../Components/Carrusel";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { data } from "autoprefixer";
 
 
 
@@ -12,13 +14,14 @@ const Cities=() =>{
     const[Ciudades,setCiudades]=useState([]);
     const [filtradas,setfiltradas]=useState([])
     const buscar=useRef(null)
-
-  
+    const dispatch = useDispatch(); 
+    const ciudadesTodas = useSelector((store) => store.Ciudades.Ciudades);
 
     useEffect(()=>{
         getCities().then(Respuesta=>{
             setCiudades(Respuesta.data);  
         setfiltradas(Respuesta.data);
+        dispatch(agregarCiudades(Respuesta.data));
     });
     },[]);
 

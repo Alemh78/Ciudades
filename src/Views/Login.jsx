@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import LayoutMain from "../Components/LayoutMain";
+import { login } from '../service/authQueries';
 
 
 function Login() {
     const [formData, setFormData] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
+         email: "",
         password: "",
       });
     const Navigate=useNavigate();
@@ -45,26 +44,8 @@ function Login() {
                     <input type="text" id="username" name="username" autoComplete="username"/>
                     </div>
                       <form className="p-8" onSubmit={handleSubmit}>
-                          <div className="mb-4">
-                            <input
-                                    className="border border-black w-full h-10 outline-none rounded-lg px-3"
-                                    type="text"
-                                    placeholder="First name"
-                                    name="first_name"
-                                    value={formData.first_name}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <input
-                                    className="border border-black w-full h-10 outline-none rounded-lg px-3"
-                                    type="text"
-                                    placeholder="Last name"
-                                    name="last_name"
-                                    value={formData.last_name}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
+                         
+                            
                             <div className="mb-4">
                                 <input
                                     className="border border-black w-full h-10 outline-none rounded-lg px-3"
@@ -103,9 +84,7 @@ function Login() {
                 <div className="p-8 bg-blue-500 text-black">
 
                     <h2>Datos guardados:</h2>
-                                <p>First Name: {formData.first_name}</p>
-                                <p>Last Name: {formData.last_name}</p>
-                                <p>Email: {formData.email}</p>
+                              <p>Email: {formData.email}</p>
                                 
                 </div>
             )}
