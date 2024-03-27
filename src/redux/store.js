@@ -1,12 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import CiudadesReducer from './reducers/CitiesReducers';
-
-const store={
-    Ciudades:CiudadesReducer
-}
-
-
+import ciudadesReducer from './reducers/CiudadesReducers'; 
 
 export default configureStore({
-    reducer:store
-})
+    reducer: {
+        ciudades: ciudadesReducer 
+    }
+});

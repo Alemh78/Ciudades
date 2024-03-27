@@ -58,9 +58,10 @@ const CitiesDetails = (props) => {
 </div>
 ))}
 </main>
+
        </Main>
     </LayoutMain>
   );
 };
 
-export default CitiesDetails;
+export default CitiesDetails

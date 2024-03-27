@@ -12,12 +12,19 @@ import { useEffect } from "react";
 import authQueries from "./service/authQueries";
 
 
-function App(){
-useEffect(()=>{
-  authQueries.loginWhithToken().then((res)=>{
-    console.log(res);
-  });
-}, []);
+function App() {
+  useEffect(() => {
+    
+    const authenticateUser = async () => {
+      try {
+        const res = await authQueries.loginWhithToken();
+        console.log('Autenticación exitosa:', res);
+      } catch (error) {
+        console.error('Error al autenticar al usuario:', error);
+      }
+    };
+    authenticateUser();
+  }, []);
 return (
   <BrowserRouter>
    <Provider store={store}> 

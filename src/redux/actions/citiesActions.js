@@ -1,11 +1,16 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Ciudades } from '../../Components/Ciudades';
- 
 
-const agregarCiudades=createAction(`agregarCiudades`,()=>{
-    return{
-           payload:Ciudades
-    }
-})
 
-export default agregarCiudades
+
+const fetchCiudades = createAction('fetchCiudades');
+
+export const loadCiudades = () => async (dispatch) => {
+  try {
+    const ciudades = await getCities(); 
+    dispatch(fetchCiudades(ciudades)); 
+  } catch (error) {
+    console.error("Error al cargar las ciudades:", error);
+  }
+};  
+
+export default fetchCiudades
