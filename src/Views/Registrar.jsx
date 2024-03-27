@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react"; 
 import LayoutMain from "../Components/LayoutMain";
+import authQueries from '../service/authQueries'; 
 
 function Registrar() {
     const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ function Registrar() {
     });
     
     const [savedData, setSavedData] = useState(null);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -23,7 +25,7 @@ function Registrar() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
         const formattedData = `
             First Name: ${formData.first_name}
@@ -32,11 +34,22 @@ function Registrar() {
             Password: ${formData.password}
             Country: ${formData.country}
             Image URL: ${formData.image}
+            description:${formData.description}
         `;
         if (window.confirm("¿Son estos los datos correctos?\n" + formattedData)) {
             console.log("Guardando datos...");
-          
-            setSavedData(formData);
+            try {
+                const response = await authQueries.register(formData);
+                console.log(response);
+                if (response.success) {
+                    console.log("Registro exitoso!");
+                    setSavedData(formData);
+                } else {
+                    console.error("Error al registrar:", response.error);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
         } else {
             console.log("Corrigiendo datos...");
         }
@@ -125,7 +138,7 @@ function Registrar() {
                                     type="text"
                                     placeholder="description"
                                     name="description"
-                                    value={formData.first_name}
+                                    value={formData.description}
                                     onChange={handleInputChange}
                                 />
                             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import LayoutMain from "../Components/LayoutMain";
 import { login } from '../service/authQueries';
 
@@ -10,34 +10,34 @@ function Login() {
         password: "",
       });
 
-    const [error, setError] = useState(null);  
-    const Navigate=useNavigate();
+    const [error, setError] = useState(null); 
+
+   
+
     function handleInputChange(e){
       const name=e.target.name
       const value=e.target.value
-      const aux={...formData};
-      aux[name]=value;
-      setFormData(aux);
-
-    }
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+    }));
+};
     async function handleSubmit(e) {
         e.preventDefault();
         try {
             const response = await login(formData);
             console.log(response);
-            if (response.status === 201) {
-                console.log("Registro exitoso!");
-                Navigate("/");
+            if (response.success) {
+                console.log("Inicio de sesión exitoso!");
+                // Aquí podrías redirigir al usuario a la página principal
             } else {
-                setError(response.statusMsg || "Error al registrar.");
+                setError(response.message || "Error al iniciar sesión.");
             }
         } catch (error) {
             console.error("Error:", error);
-             setError("Error en la solicitud");
-     
+            setError("Error en la solicitud");
         }
-    }
-
+    };
     return (
         <LayoutMain>
             <div>
