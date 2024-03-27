@@ -102,6 +102,7 @@ function Registrar() {
                                     onChange={handleInputChange}
                                 >
                                     <option value="">Select country</option>
+                                    <option value="Argentina">Argentina</option>
                                     <option value="Uruguay">Uruguay</option>
                                     <option value="Chile">Chile</option>
                                     <option value="Paraguay">Paraguay</option>

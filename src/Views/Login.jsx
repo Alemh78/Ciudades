@@ -9,6 +9,8 @@ function Login() {
          email: "",
         password: "",
       });
+
+    const [error, setError] = useState(null);  
     const Navigate=useNavigate();
     function handleInputChange(e){
       const name=e.target.name
@@ -25,15 +27,17 @@ function Login() {
             console.log(response);
             if (response.status === 201) {
                 console.log("Registro exitoso!");
-                Navigate("/login");
+                Navigate("/");
             } else {
-                setError(response.message || "Error al registrar.");
+                setError(response.statusMsg || "Error al registrar.");
             }
         } catch (error) {
             console.error("Error:", error);
+             setError("Error en la solicitud");
      
         }
     }
+
     return (
         <LayoutMain>
             <div>
