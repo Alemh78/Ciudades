@@ -4,32 +4,30 @@ import LayoutMain from "../Components/LayoutMain";
 import { login } from '../service/authQueries';
 
 
+
 function Login() {
     const [formData, setFormData] = useState({
-         email: "",
+        email: "",
         password: "",
-      });
+    });
+    const [error, setError] = useState(null);
 
-    const [error, setError] = useState(null); 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
-   
-
-    function handleInputChange(e){
-      const name=e.target.name
-      const value=e.target.value
-      setFormData(prevState => ({
-        ...prevState,
-        [name]: value
-    }));
-};
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await login(formData);
             console.log(response);
             if (response.success) {
                 console.log("Inicio de sesión exitoso!");
-                // Aquí podrías redirigir al usuario a la página principal
+                
             } else {
                 setError(response.message || "Error al iniciar sesión.");
             }
@@ -38,60 +36,56 @@ function Login() {
             setError("Error en la solicitud");
         }
     };
+
     return (
         <LayoutMain>
-            <div>
-                <Link to="/Header"></Link>
-                <main className="grow flex justify-center bg-blue-500">
-                    <div className="border border-black w-10/12 bg-white rounded-lg">
-                    <div>
-                    <input type="text" id="username" name="username" autoComplete="username"/>
-                    </div>
-                      <form className="p-8" onSubmit={handleSubmit}>
-                         
-                            
-                            <div className="mb-4">
-                                <input
-                                    className="border border-black w-full h-10 outline-none rounded-lg px-3"
-                                    type="email"
-                                    placeholder="Email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                           
-                            <div className="mb-4">
-                                <input
-                                    className="border border-black w-full h-10 outline-none rounded-lg px-3"
-                                    type="password"
-                                    placeholder="Password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                            >
-                                Login
-                            </button>
-                        </form>
-                    </div>
+            <div className="flex justify-center items-center h-full bg-blue-500">
+                <main className="w-full max-w-md p-6 bg-white rounded-lg shadow-md
+                mt-20 border-black border-[1px]">
+                    <h2 className="text-2xl font-bold mb-4">Login</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 ">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-2 mt-1 text-sm  rounded-md
+                                 focus:outline-none focus:ring focus:ring-blue-500  border-black border-[1px]"
+                                placeholder="Correo electrónico"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Contraseña</label>
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-2 mt-1 text-sm  rounded-md
+                                border-black border-[1px] focus:outline-none focus:ring focus:ring-blue-500"
+                                placeholder="Contraseña"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full py-2 mt-2 text-sm font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
+                        >
+                            Iniciar sesión
+                        </button>
+                    </form>
+                    {error && <p className="mt-4 text-red-500">{error}</p>}
                 </main>
-                <footer className="bg-blue-500 text-black text-center py-4">
+                
+            </div>
+            <footer className="bg-blue-500 text-white text-center py-4">
                     Alejandra Hidalgo-My Tinerary
                 </footer>
-            </div>
-            {formData && (
-                <div className="p-8 bg-blue-500 text-black">
-
-                    <h2>Datos guardados:</h2>
-                              <p>Email: {formData.email}</p>
-                                
-                </div>
-            )}
         </LayoutMain>
     );
 }

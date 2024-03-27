@@ -80,6 +80,11 @@ const Cities=() =>{
            {renderCiudades}
            </section>
            </main>
+           <div>
+           <footer className="bg-blue-500 text-white text-center py-4">
+                    Alejandra Hidalgo-My Tinerary
+          </footer>
+           </div>
         
          </Main>
     </LayoutMain>
